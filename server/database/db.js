@@ -1,5 +1,5 @@
 const environment = process.env.NODE_ENV || 'development'
-const config = require('./knexfile')[environment]
+const config = require('../../knexfile.js')[environment]
 const connection = require('knex')(config)
 
 
@@ -26,8 +26,6 @@ function updateScore(player, db = connection){
         .where('id', dbPlayer.id)
         .update({score: dbPlayer.score + 2})
     })
-    
-
 }
  module.exports = {
      getPlayers,
