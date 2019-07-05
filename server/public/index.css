@@ -390,3 +390,10 @@ body {
 	font-family: 'Istok Web', sans-serif;
 	color:#ED775E;
 }
+
+.leaderboard {
+	background-color: red;
+	width: 25%;
+	height: 1000px;
+	border: 1px solid black;
+}

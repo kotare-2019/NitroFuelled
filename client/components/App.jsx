@@ -3,12 +3,16 @@ import React from 'react'
 // import Bracket from './Bracket'
 import Players from './Players'
 import Bracket from './Bracket'
+import Leaderboard from './Leaderboard'
+import {getPlayers} from '../api/index'
 
 // const App = () => {
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = { 
+      playersArr: [],
+      checkPlayers:[],
       bracketComponent: false,
       player1: "",
       player2: "",
@@ -26,6 +30,7 @@ class App extends React.Component {
       finalist2: [],
       winner: [],
       winnerComponent: false,
+      
     }
     this.handleChange = this.handleChange.bind(this)
     this.showBracket = this.showBracket.bind(this)
@@ -36,6 +41,20 @@ class App extends React.Component {
     this.round2Winner1 = this.round2Winner1.bind(this)
     this.round2Winner2 = this.round2Winner2.bind(this)
     this.mktWinner = this.mktWinner.bind(this)
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this.addExisitingPlayers = this.addExisitingPlayers.bind(this)
+  }
+
+  componentDidMount(){
+    this.addExisitingPlayers()
+  }
+  addExisitingPlayers(){
+    getPlayers()
+    .then(players=>{
+      this.setState({
+        playersArr: players,
+      })
+    })
   }
 
   showBracket () {
@@ -45,6 +64,7 @@ class App extends React.Component {
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value,
+      
     })
   }
 
@@ -95,6 +115,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state.playersArr)
     return (
       // {this.state.bracketComponent == true && <Bracket/>}
         <div>
@@ -104,6 +125,9 @@ class App extends React.Component {
               {/* <h3>Bridey's</h3> */}
               {/* <h1>Mario Kart Tournament</h1> */}
             </div>
+          </div>
+          <div>
+            <Leaderboard />
           </div>
           <div>
             {this.state.bracketComponent ? <Bracket state={this.state} round1Winner1={this.round1Winner1} round1Winner2={this.round1Winner2} round1Winner3={this.round1Winner3} round1Winner4={this.round1Winner4} round2Winner1={this.round2Winner1} round2Winner2={this.round2Winner2} mktWinner={this.mktWinner}/>: <Players  updatePlayers={this.handleChange} showBracket={this.showBracket}/> }
