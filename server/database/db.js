@@ -18,7 +18,6 @@ function addPlayer(player, db = connection){
 }
 
 function updateScore(player, db = connection){
-    console.log("player:", player)
     return db('players')
     .where('name', player.name)
     .first()

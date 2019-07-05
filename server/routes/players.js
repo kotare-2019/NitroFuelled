@@ -31,13 +31,11 @@ router.post('/', (req, res) => {
         })
 })
 router.put('/', (req, res)=>{
-    console.log(req.body)
     db.updateScore(req.body)
     .then(player =>{
-        res.json({})
+        res.send(player)
     })
     .catch(err => {
-        console.log(err)
         res.status(500).send(err.message)
     })
 })

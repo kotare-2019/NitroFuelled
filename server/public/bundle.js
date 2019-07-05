@@ -120,9 +120,9 @@ function addPlayers(players) {
   });
 }
 function updateScore(playerName) {
-  return superagent__WEBPACK_IMPORTED_MODULE_0___default.a.put('/api/v1').send(playerName).then(function (res) {
-    var returnedPlayer = res.body;
-    return returnedPlayer;
+  return superagent__WEBPACK_IMPORTED_MODULE_0___default.a.put('/api/v1').send(playerName).then(function (res) {// const returnedPlayer = res.body
+    // console.log(returnedPlayer)
+    // return returnedPlayer
   });
 }
 
@@ -141,10 +141,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Players__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Players */ "./client/components/Players.jsx");
 /* harmony import */ var _Bracket__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Bracket */ "./client/components/Bracket.jsx");
-/* harmony import */ var _Leaderboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Leaderboard */ "./client/components/Leaderboard.jsx");
-/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../api/index */ "./client/api/index.js");
-/* harmony import */ var events__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! events */ "./node_modules/events/events.js");
-/* harmony import */ var events__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(events__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _Winner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Winner */ "./client/components/Winner.jsx");
+/* harmony import */ var _Leaderboard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Leaderboard */ "./client/components/Leaderboard.jsx");
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../api/index */ "./client/api/index.js");
+/* harmony import */ var events__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! events */ "./node_modules/events/events.js");
+/* harmony import */ var events__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(events__WEBPACK_IMPORTED_MODULE_6__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -167,6 +168,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
  // import { HashRouter as Router, Route} from react-router-dom
 // import Bracket from './Bracket'
+
 
 
 
@@ -223,7 +225,6 @@ function (_React$Component) {
   _createClass(App, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log(this.playersArr);
       this.addExisitingPlayers();
     }
   }, {
@@ -297,7 +298,7 @@ function (_React$Component) {
       var updateWinnerScore = this.state.playersArr.find(function (player) {
         return player.name == event.target.textContent;
       });
-      Object(_api_index__WEBPACK_IMPORTED_MODULE_4__["updateScore"])(updateWinnerScore);
+      Object(_api_index__WEBPACK_IMPORTED_MODULE_5__["updateScore"])(updateWinnerScore);
       this.setState({
         winner: event.target.textContent
       });
@@ -465,7 +466,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Leaderboard = function Leaderboard(props) {
-  console.log(props.state);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "leaderboard"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Leaderboard"), props.state.playersArr.map(function (player) {

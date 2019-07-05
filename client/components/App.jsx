@@ -49,7 +49,6 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    console.log(this.playersArr)
     this.addExisitingPlayers()
   }
 

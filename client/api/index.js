@@ -29,7 +29,9 @@ export function updateScore(playerName){
     return request.put('/api/v1')
     .send(playerName)
     .then(res =>{
-        const returnedPlayer = res.body
-        return returnedPlayer
+        
+        // const returnedPlayer = res.body
+        // console.log(returnedPlayer)
+        // return returnedPlayer
     })
 }
