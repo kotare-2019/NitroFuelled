@@ -4,27 +4,26 @@ body, html {
 }
 
 .center-logo {
-	position: absolute;
 	margin: auto;
+	text-align: center;
 }
 
 .bottomBoi {
 	margin-bottom: 10%;
 }
 
-.center-all {
+/* .center-all {
 	text-align: center;
 	width: 75%;
-}
+} */
 
 .logo {
 	position: relative;
 	text-align: center;
-	/* background-image: url("/images/MKThero.png") */
 }
 
 .hero-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/images/hero.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/ctrbg.jpg");
 	height: 350px;
 	width: 100%;
   background-position: center;
@@ -118,9 +117,7 @@ body, html {
 	border-radius: 3px;
 }
 .nameForm li:last-child {
-	/* border:none; */
 	margin-bottom: 0px;
-	/* text-align: center; */
 }
 .nameForm li > label {
 	display: block;
@@ -265,7 +262,6 @@ body {
 .split {
 	margin: 0 auto;
 	display:block;
-	/* float:left; */
 	display: -webkit-box;
 	display: -moz-box;
 	display: -ms-flexbox;
@@ -277,7 +273,6 @@ body {
 	flex-direction:row;
 }
 .champion {
-	/* float:left; */
 	display:block;
 	width: 16%;
 	-webkit-flex-direction:row;
@@ -289,13 +284,11 @@ body {
 	padding: 230px 0\9;
 } 
 .champion i {
-	/* color: #a0a6a8; */
 	 font-size: 45px;
 	padding: 10px 0;
  }
 .round {
 	display:block;
-	/* float:left; */
 	display: -webkit-box;
 	display: -moz-box;
 	display: -ms-flexbox;

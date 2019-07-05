@@ -124,7 +124,7 @@ class App extends React.Component {
       <div>
         <div className="hero-image">
           <div className="center-logo">
-            <img src="/images/MKThero.png" />
+            <img src="/images/CTReda.png" />
             {/* <h3>Bridey's</h3> */}
             {/* <h1>Mario Kart Tournament</h1> */}
           </div>

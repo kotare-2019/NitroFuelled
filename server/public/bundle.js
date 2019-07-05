@@ -300,7 +300,7 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "center-logo"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: "/images/MKThero.png"
+          src: "/images/CTReda.png"
         }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Leaderboard__WEBPACK_IMPORTED_MODULE_4__["default"], {
