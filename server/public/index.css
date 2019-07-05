@@ -14,6 +14,7 @@ body, html {
 
 .center-all {
 	text-align: center;
+	width: 75%;
 }
 
 .logo {
@@ -84,13 +85,18 @@ body, html {
 }
 
 .nameForm {
-	max-width:400px;
+	max-width:100%;
 	margin:50px auto;
 	background: #EAEDED;
 	border-radius:2px;
 	padding:20px;
   font-family: Georgia, "Times New Roman", Times, serif;
 }
+
+.name-form-container {
+	width: 30%
+}
+
 .nameForm h1 {
 	display: block;
 	text-align: center;
@@ -244,7 +250,7 @@ body {
 	padding: 40px 0;
 }
 .container {
-	max-width: 1100px;
+	max-width: 80%;
 	margin: 0 auto;
 	display:block;
 	display: -webkit-box;
@@ -265,7 +271,7 @@ body {
 	display: -ms-flexbox;
 	display: -webkit-flex;
 	display:flex;
-	width: 60%;
+	width: 100%;
 	-webkit-flex-direction:row;
 	-moz-flex-direction:row;
 	flex-direction:row;
@@ -392,8 +398,20 @@ body {
 }
 
 .leaderboard {
-	background-color: red;
+	text-align: center;
 	width: 25%;
-	height: 1000px;
-	border: 1px solid black;
+	height:100%;
+	margin-right: 5%;
+	margin-top: 5%;
+}
+
+.winner {
+	width: 25%;
+	height: 100%;
+	margin-left: 5%;
+	margin-top: 5%;
+}
+
+.container {
+	justify-content: space-between;
 }

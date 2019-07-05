@@ -6,7 +6,6 @@ const connection = require('knex')(config)
 function getPlayers(db = connection){
     return db('players').select()
     
-
 }
 function addPlayer(player){
     return db('players')
@@ -17,6 +16,7 @@ function addPlayer(player){
         return player
     })
 }
+
  module.exports = {
      getPlayers,
      addPlayer,

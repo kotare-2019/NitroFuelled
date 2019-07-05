@@ -131,8 +131,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Players__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Players */ "./client/components/Players.jsx");
 /* harmony import */ var _Bracket__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Bracket */ "./client/components/Bracket.jsx");
-/* harmony import */ var _Leaderboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Leaderboard */ "./client/components/Leaderboard.jsx");
-/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../api/index */ "./client/api/index.js");
+/* harmony import */ var _Winner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Winner */ "./client/components/Winner.jsx");
+/* harmony import */ var _Leaderboard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Leaderboard */ "./client/components/Leaderboard.jsx");
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../api/index */ "./client/api/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -155,6 +156,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
  // import { HashRouter as Router, Route} from react-router-dom
 // import Bracket from './Bracket'
+
 
 
 
@@ -217,11 +219,11 @@ function (_React$Component) {
     value: function addExisitingPlayers() {
       var _this2 = this;
 
-      Object(_api_index__WEBPACK_IMPORTED_MODULE_4__["getPlayers"])().then(function (players) {
+      Object(_api_index__WEBPACK_IMPORTED_MODULE_5__["getPlayers"])().then(function (players) {
         _this2.setState({
           playersArr: players
         });
-      });
+      }).then(console.log('hfghfgh'));
     }
   }, {
     key: "showBracket",
@@ -299,7 +301,11 @@ function (_React$Component) {
           className: "center-logo"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: "/images/MKThero.png"
-        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Leaderboard__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.bracketComponent ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bracket__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Leaderboard__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          state: this.state
+        }), this.state.bracketComponent ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bracket__WEBPACK_IMPORTED_MODULE_2__["default"], {
           state: this.state,
           round1Winner1: this.round1Winner1,
           round1Winner2: this.round1Winner2,
@@ -311,6 +317,8 @@ function (_React$Component) {
         }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Players__WEBPACK_IMPORTED_MODULE_1__["default"], {
           updatePlayers: this.handleChange,
           showBracket: this.showBracket
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Winner__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          state: this.state
         }))) // button on click (showbracket)
 
       );
@@ -446,9 +454,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Leaderboard = function Leaderboard(props) {
+  console.log(props.state);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "leaderboard"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "yeet"));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Leaderboard"), props.state.playersArr.map(function (player) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, player.name, " - ", player.score);
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Leaderboard);
@@ -528,6 +539,29 @@ var Players = function Players(props) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Players);
+
+/***/ }),
+
+/***/ "./client/components/Winner.jsx":
+/*!**************************************!*\
+  !*** ./client/components/Winner.jsx ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Winner = function Winner(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "winner"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Latest Winner"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, props.state.winner));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Winner);
 
 /***/ }),
 
