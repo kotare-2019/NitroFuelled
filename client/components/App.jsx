@@ -52,6 +52,8 @@ class App extends React.Component {
     this.addExisitingPlayers()
   }
 
+ 
+
   addExisitingPlayers() {
     getPlayers()
       .then(players => {
@@ -59,7 +61,6 @@ class App extends React.Component {
           playersArr: players,
         })
       })
-      .then(console.log('hfghfgh'))
   }
   
 

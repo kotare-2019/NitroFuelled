@@ -12,10 +12,10 @@ body, html {
 	margin-bottom: 10%;
 }
 
-/* .center-all {
+.center-all {
 	text-align: center;
-	width: 75%;
-} */
+	width: 50%;
+}
 
 .logo {
 	position: relative;

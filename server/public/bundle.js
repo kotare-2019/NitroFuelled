@@ -236,7 +236,7 @@ function (_React$Component) {
         _this2.setState({
           playersArr: players
         });
-      }).then(console.log('hfghfgh'));
+      });
     }
   }, {
     key: "showBracket",
