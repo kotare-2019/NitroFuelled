@@ -8,17 +8,32 @@ function getPlayers(db = connection){
     
 
 }
-function addPlayer(player){
+function addPlayer(player, db = connection){
     return db('players')
     .insert({
-        name:player, score:0
+        name: player.name, score: player.score
     })
     .then(player=>{
         return player
     })
 }
+
+function updateScore(player, db = connection){
+    console.log("player:", player)
+    return db('players')
+    .where('name', player.name)
+    .first()
+    .then(dbPlayer =>{
+        return db('players')
+        .where('id', dbPlayer.id)
+        .update({score: dbPlayer.score + 2})
+    })
+    
+
+}
  module.exports = {
      getPlayers,
      addPlayer,
+     updateScore,
  }
 

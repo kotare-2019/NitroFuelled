@@ -4,7 +4,9 @@ import React from 'react'
 import Players from './Players'
 import Bracket from './Bracket'
 import Leaderboard from './Leaderboard'
-import {getPlayers} from '../api/index'
+import {getPlayers, updateScore} from '../api/index'
+import { EventEmitter } from 'events';
+
 
 // const App = () => {
 class App extends React.Component {
@@ -46,6 +48,7 @@ class App extends React.Component {
   }
 
   componentDidMount(){
+    console.log(this.playersArr)
     this.addExisitingPlayers()
   }
   addExisitingPlayers(){
@@ -56,6 +59,7 @@ class App extends React.Component {
       })
     })
   }
+  
 
   showBracket () {
     this.setState({ bracketComponent: true })
@@ -69,28 +73,24 @@ class App extends React.Component {
   }
 
   round1Winner1(event) {
-    console.log(event.target.textContent)
     this.setState({
       semiFinalist1: event.target.textContent
     })
   }
 
   round1Winner2(event) {
-    console.log(event.target.textContent)
     this.setState({
       semiFinalist2: event.target.textContent
     })
   }
 
   round1Winner3(event) {
-    console.log(event.target.textContent)
     this.setState({
       semiFinalist3: event.target.textContent
     })
   }
 
   round1Winner4(event) {
-    console.log(event.target.textContent)
     this.setState({
       semiFinalist4: event.target.textContent
     })
@@ -109,13 +109,16 @@ class App extends React.Component {
   }
 
   mktWinner(event) {
+    const updateWinnerScore = this.state.playersArr.find(function(player){
+      return player.name == event.target.textContent
+    })
+    updateScore(updateWinnerScore)
     this.setState({
       winner: event.target.textContent,
     })
   }
 
   render() {
-    console.log(this.state.playersArr)
     return (
       // {this.state.bracketComponent == true && <Bracket/>}
         <div>
