@@ -3,12 +3,19 @@ import React from 'react'
 // import Bracket from './Bracket'
 import Players from './Players'
 import Bracket from './Bracket'
+import Winner from './Winner'
+import Leaderboard from './Leaderboard'
+import {getPlayers, updateScore} from '../api/index'
+import { EventEmitter } from 'events';
+
 
 // const App = () => {
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { 
+    this.state = {
+      playersArr: [],
+      checkPlayers: [],
       bracketComponent: false,
       player1: "",
       player2: "",
@@ -27,6 +34,7 @@ class App extends React.Component {
       winner: [],
       winnerComponent: false,
     }
+
     this.handleChange = this.handleChange.bind(this)
     this.showBracket = this.showBracket.bind(this)
     this.round1Winner1 = this.round1Winner1.bind(this)
@@ -36,41 +44,55 @@ class App extends React.Component {
     this.round2Winner1 = this.round2Winner1.bind(this)
     this.round2Winner2 = this.round2Winner2.bind(this)
     this.mktWinner = this.mktWinner.bind(this)
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this.addExisitingPlayers = this.addExisitingPlayers.bind(this)
   }
 
-  showBracket () {
+  componentDidMount(){
+    this.addExisitingPlayers()
+  }
+
+  addExisitingPlayers() {
+    getPlayers()
+      .then(players => {
+        this.setState({
+          playersArr: players,
+        })
+      })
+      .then(console.log('hfghfgh'))
+  }
+  
+
+  showBracket() {
     this.setState({ bracketComponent: true })
   }
 
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value,
+
     })
   }
 
   round1Winner1(event) {
-    console.log(event.target.textContent)
     this.setState({
       semiFinalist1: event.target.textContent
     })
   }
 
   round1Winner2(event) {
-    console.log(event.target.textContent)
     this.setState({
       semiFinalist2: event.target.textContent
     })
   }
 
   round1Winner3(event) {
-    console.log(event.target.textContent)
     this.setState({
       semiFinalist3: event.target.textContent
     })
   }
 
   round1Winner4(event) {
-    console.log(event.target.textContent)
     this.setState({
       semiFinalist4: event.target.textContent
     })
@@ -89,6 +111,10 @@ class App extends React.Component {
   }
 
   mktWinner(event) {
+    const updateWinnerScore = this.state.playersArr.find(function(player){
+      return player.name == event.target.textContent
+    })
+    updateScore(updateWinnerScore)
     this.setState({
       winner: event.target.textContent,
     })
@@ -97,20 +123,22 @@ class App extends React.Component {
   render() {
     return (
       // {this.state.bracketComponent == true && <Bracket/>}
-        <div>
-          <div className="hero-image">
-            <div className="center-logo">
-              <img src="/images/MKThero.png"/>
-              {/* <h3>Bridey's</h3> */}
-              {/* <h1>Mario Kart Tournament</h1> */}
-            </div>
-          </div>
-          <div>
-            {this.state.bracketComponent ? <Bracket state={this.state} round1Winner1={this.round1Winner1} round1Winner2={this.round1Winner2} round1Winner3={this.round1Winner3} round1Winner4={this.round1Winner4} round2Winner1={this.round2Winner1} round2Winner2={this.round2Winner2} mktWinner={this.mktWinner}/>: <Players  updatePlayers={this.handleChange} showBracket={this.showBracket}/> }
+      <div>
+        <div className="hero-image">
+          <div className="center-logo">
+            <img src="/images/CTReda.png" />
+            {/* <h3>Bridey's</h3> */}
+            {/* <h1>Mario Kart Tournament</h1> */}
           </div>
         </div>
+        <div className="container">
+          <Leaderboard state={this.state} />
+          {this.state.bracketComponent ? <Bracket state={this.state} round1Winner1={this.round1Winner1} round1Winner2={this.round1Winner2} round1Winner3={this.round1Winner3} round1Winner4={this.round1Winner4} round2Winner1={this.round2Winner1} round2Winner2={this.round2Winner2} mktWinner={this.mktWinner} /> : <Players updatePlayers={this.handleChange} showBracket={this.showBracket} />}
+          <Winner state={this.state} />
+        </div>
+      </div>
 
-// button on click (showbracket)
+      // button on click (showbracket)
     )
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { thisExpression } from '@babel/types';
+import Leaderboard from './Leaderboard'
 
 const Bracket = (props) => {
 
